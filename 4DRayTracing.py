@@ -3,6 +3,7 @@ rad = 4
 pos = (6, 0, 0, 0)
 
 import math
+import os
 
 def get_unit_div():
     return [a / res * 2 - 1 for a in range(0, res + 1)]
@@ -44,6 +45,9 @@ for y in range(res + 1):
                 image[y][z][w] = (0, 0, int(sd_to_int(sensor_c, intercept) * 20), 255)
 
 from PIL import Image
+
+if not os.path.exists('slices'):
+    os.makedirs('slices')
 
 for pz in range(res + 1):
     img = Image.new(mode="RGBA", size=(res + 1, res + 1))
